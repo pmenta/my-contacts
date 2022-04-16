@@ -18,4 +18,8 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  input {
+    font-size: 16px;
+  }
 `;
