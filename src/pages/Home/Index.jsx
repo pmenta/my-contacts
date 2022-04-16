@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import {
   Container, InputSearchContainer, Header, ListContainer, CardList, Card,
 } from './styles';
@@ -16,7 +18,7 @@ export function Home() {
         <strong>
           3 contatos
         </strong>
-        <a href="/">Novo contato</a>
+        <Link to="/new">Novo contato</Link>
       </Header>
       <ListContainer>
         <header>
@@ -29,11 +31,11 @@ export function Home() {
           <Card>
             <div>
               <div>
-                <strong>Mateus Silva</strong>
+                <strong>João Vitor</strong>
                 <small>instagram</small>
               </div>
-              <span>mateus@devacadamy.com.br</span>
-              <span>(73) 9 9904-4965</span>
+              <span>joao@dev.com.br</span>
+              <span>(73) 9 9999-9999</span>
             </div>
             <div>
               <a href="/"><img src={EditIcon} alt="Editar" width={20} height={22} /></a>
@@ -44,11 +46,11 @@ export function Home() {
           <Card>
             <div>
               <div>
-                <strong>Mateus Silva</strong>
+                <strong>João Vitor</strong>
                 <small>instagram</small>
               </div>
-              <span>mateus@devacadamy.com.br</span>
-              <span>(73) 9 9904-4965</span>
+              <span>joao@dev.com.br</span>
+              <span>(73) 9 9999-9999</span>
             </div>
             <div>
               <a href="/"><img src={EditIcon} alt="Editar" width={20} height={22} /></a>
@@ -59,11 +61,11 @@ export function Home() {
           <Card>
             <div>
               <div>
-                <strong>Mateus Silva</strong>
+                <strong>João Vitor</strong>
                 <small>instagram</small>
               </div>
-              <span>mateus@devacadamy.com.br</span>
-              <span>(73) 9 9904-4965</span>
+              <span>joao@dev.com.br</span>
+              <span>(73) 9 9999-9999</span>
             </div>
             <div>
               <a href="/"><img src={EditIcon} alt="Editar" width={20} height={22} /></a>

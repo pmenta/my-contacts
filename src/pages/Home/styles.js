@@ -97,6 +97,10 @@ export const Card = styled.li`
     margin-top: 16px;
   }
 
+  &:last-child {
+    margin-bottom: 16px;
+  }
+
   div:first-child {
     width: 100%;
     max-width: 230px;
