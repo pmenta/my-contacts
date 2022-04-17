@@ -18,7 +18,7 @@ export const Button = styled.button`
 
   transition: background-color 0.2s ease-in;
 
-  &:hover {
+  &:hover, &:focus {
       background: ${({ theme }) => theme.colors.primary.light};
   }
 
