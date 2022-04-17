@@ -11,7 +11,7 @@ export function ContactForm({ buttonLabel }) {
     <Form>
       <FormGroup><Input type="text" placeholder="Nome" /></FormGroup>
       <FormGroup><Input type="email" placeholder="Email" /></FormGroup>
-      <FormGroup><Input type="phone" placeholder="Email" /></FormGroup>
+      <FormGroup><Input type="phone" placeholder="Telefone" /></FormGroup>
       <FormGroup>
         <Select>
           <option value="123">Instagram</option>

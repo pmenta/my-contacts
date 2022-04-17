@@ -9,6 +9,8 @@ export default {
     },
     danger: {
       main: '#FC5050',
+      light: '#F97171',
+      dark: '#F63131',
     },
     gray: {
       900: '#222222',

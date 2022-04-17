@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Loader } from '../../components/Loader';
 
 import {
   Container, InputSearchContainer, Header, ListContainer, CardList, Card,
@@ -11,6 +12,9 @@ import TrashIcon from '../../assets/images/icons/trash.svg';
 export function Home() {
   return (
     <Container>
+
+      <Loader />
+
       <InputSearchContainer>
         <input type="text" placeholder="Pesquisar contato..." />
       </InputSearchContainer>
