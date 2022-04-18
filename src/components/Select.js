@@ -13,7 +13,7 @@ export const Select = styled.select`
   background: #fff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
 
-  transition: border-color .2s ease-in;
+  transition: all 0.2s ease-in;
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.primary.main};
