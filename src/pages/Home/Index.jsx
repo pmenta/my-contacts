@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -8,7 +9,26 @@ import ArrowIcon from '../../assets/images/icons/chevron.svg';
 import EditIcon from '../../assets/images/icons/edit.svg';
 import TrashIcon from '../../assets/images/icons/trash.svg';
 
+import { formatPhone } from '../../utils/formatPhone';
+
+import { getContacts } from '../../requests/Contacts';
+
 export function Home() {
+  const [contacts, setContacts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      try {
+        const fetchedContacts = await getContacts();
+        setContacts(fetchedContacts);
+      } catch {
+        if (isLoading) setIsLoading(false);
+      }
+    })();
+  }, []);
+
   return (
     <Container>
       <InputSearchContainer>
@@ -28,51 +48,22 @@ export function Home() {
           </button>
         </header>
         <CardList>
-          <Card>
-            <div>
+          {contacts.map((contact) => (
+            <Card key={contact.id}>
               <div>
-                <strong>João Vitor</strong>
-                <small>instagram</small>
+                <div>
+                  <strong>{contact.name}</strong>
+                  {contact.category_name && <small>{contact.category_name}</small>}
+                </div>
+                <span>{contact.email}</span>
+                <span>{formatPhone(contact.phone)}</span>
               </div>
-              <span>joao@dev.com.br</span>
-              <span>(73) 9 9999-9999</span>
-            </div>
-            <div>
-              <a href="/"><img src={EditIcon} alt="Editar" width={20} height={22} /></a>
-              <button type="button"><img src={TrashIcon} alt="Excluir" width={20} height={22} /></button>
-            </div>
-          </Card>
-
-          <Card>
-            <div>
               <div>
-                <strong>João Vitor</strong>
-                <small>instagram</small>
+                <a href="/"><img src={EditIcon} alt="Editar" width={20} height={22} /></a>
+                <button type="button"><img src={TrashIcon} alt="Excluir" width={20} height={22} /></button>
               </div>
-              <span>joao@dev.com.br</span>
-              <span>(73) 9 9999-9999</span>
-            </div>
-            <div>
-              <a href="/"><img src={EditIcon} alt="Editar" width={20} height={22} /></a>
-              <button type="button"><img src={TrashIcon} alt="Excluir" width={20} height={22} /></button>
-            </div>
-          </Card>
-
-          <Card>
-            <div>
-              <div>
-                <strong>João Vitor</strong>
-                <small>instagram</small>
-              </div>
-              <span>joao@dev.com.br</span>
-              <span>(73) 9 9999-9999</span>
-            </div>
-            <div>
-              <a href="/"><img src={EditIcon} alt="Editar" width={20} height={22} /></a>
-              <button type="button"><img src={TrashIcon} alt="Excluir" width={20} height={22} /></button>
-            </div>
-          </Card>
-
+            </Card>
+          ))}
         </CardList>
       </ListContainer>
     </Container>

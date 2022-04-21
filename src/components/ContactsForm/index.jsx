@@ -7,18 +7,28 @@ import { Select } from '../Select';
 import { Button } from '../Button';
 
 import { Form } from './styles';
+
+// import { createContact } from '../../requests/Contacts';
 import { formatPhone } from '../../utils/formatPhone';
+
+import { useToast } from '../../hooks/useToast';
 
 export function ContactForm({ buttonLabel }) {
   const {
     register, handleSubmit, formState: { errors }, setValue,
   } = useForm();
+  const [toast, handleToast] = useToast();
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit(dataForm) {
+    try {
+      // createContact(dataForm);
+      handleToast('olokinho meu!');
+    } catch {
+      console.log(dataForm, toast);
+    }
   }
 
-  const phoneRegex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})-?(\d{4}))$/;
+  const phoneValidator = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})-?(\d{4}))$/;
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -42,7 +52,7 @@ export function ContactForm({ buttonLabel }) {
       </FormGroup>
       <FormGroup error={errors.phone ? 'Insira um telefone válido' : ''}>
         <Input
-          {...register('phone', { required: false, pattern: phoneRegex })}
+          {...register('phone', { required: false, pattern: phoneValidator })}
           error={errors.phone}
           type="phone"
           placeholder="Telefone"
