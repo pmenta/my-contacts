@@ -42,7 +42,7 @@ export function ContactForm({ buttonLabel }) {
       </FormGroup>
       <FormGroup error={errors.phone ? 'Insira um telefone válido' : ''}>
         <Input
-          {...register('phone', { required: false, mode: 'onChange', pattern: phoneRegex })}
+          {...register('phone', { required: false, pattern: phoneRegex })}
           error={errors.phone}
           type="phone"
           placeholder="Telefone"
