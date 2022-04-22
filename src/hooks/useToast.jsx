@@ -1,14 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useToastDispatchContext } from '../context/ToastContext';
 
 export function useToast() {
-  const [toast, setToast] = useState();
+  const dispatch = useToastDispatchContext();
 
-  const handleToast = useCallback((toastLabel) => {
-    if (!toastLabel) setToast();
-    console.log(toastLabel);
-    setToast({ label: toastLabel });
-    setTimeout(() => setToast(), 3600);
-  }, []);
+  function toast(label) {
+    dispatch(label ? { label } : null);
+  }
 
-  return [toast, handleToast];
+  return toast;
 }

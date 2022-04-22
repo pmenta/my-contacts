@@ -11,20 +11,20 @@ import { Form } from './styles';
 // import { createContact } from '../../requests/Contacts';
 import { formatPhone } from '../../utils/formatPhone';
 
-import { useToast } from '../../hooks/useToast';
+const { useToast } = '../../hooks/useToast';
 
 export function ContactForm({ buttonLabel }) {
   const {
     register, handleSubmit, formState: { errors }, setValue,
   } = useForm();
-  const [toast, handleToast] = useToast();
+  const toast = useToast();
 
   function onSubmit(dataForm) {
     try {
       // createContact(dataForm);
-      handleToast('olokinho meu!');
+      toast('olokinho meu!');
     } catch {
-      console.log(dataForm, toast);
+      console.log(dataForm);
     }
   }
 

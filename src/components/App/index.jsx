@@ -4,7 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import Routes from '../../routes';
 
 import { Header } from '../Header';
-import { ToastProvider } from '../Toast/ToastProvider';
+import { ToastProvider } from '../../context/ToastContext';
+import { ToastContainer } from '../Toast/ToastContainer';
 
 import GlobalStyles from '../../assets/styles/global';
 import DefaultTheme from '../../assets/styles/themes/default';
@@ -15,12 +16,14 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={DefaultTheme}>
-        <GlobalStyles />
-        <Container>
-          <Header />
-          <Routes />
-          <ToastProvider />
-        </Container>
+        <ToastProvider>
+          <GlobalStyles />
+          <Container>
+            <Header />
+            <Routes />
+            <ToastContainer />
+          </Container>
+        </ToastProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
