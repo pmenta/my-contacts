@@ -4,7 +4,8 @@ export function useToast() {
   const dispatch = useToastDispatchContext();
 
   function toast(label) {
-    dispatch(label ? { label } : null);
+    console.log(label);
+    dispatch(label ? { label } : 'foda');
   }
 
   return toast;

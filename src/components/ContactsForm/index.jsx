@@ -8,21 +8,21 @@ import { Button } from '../Button';
 
 import { Form } from './styles';
 
-// import { createContact } from '../../requests/Contacts';
+import { createContact } from '../../requests/Contacts';
 import { formatPhone } from '../../utils/formatPhone';
 
-const { useToast } = '../../hooks/useToast';
+import { useToast } from '../../context/ToastContext';
 
 export function ContactForm({ buttonLabel }) {
   const {
     register, handleSubmit, formState: { errors }, setValue,
   } = useForm();
-  const toast = useToast();
+  const addToast = useToast();
 
   function onSubmit(dataForm) {
     try {
-      // createContact(dataForm);
-      toast('olokinho meu!');
+      addToast({ label: 'olokinho meu' });
+      createContact(dataForm);
     } catch {
       console.log(dataForm);
     }
