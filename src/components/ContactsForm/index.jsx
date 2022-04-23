@@ -19,12 +19,12 @@ export function ContactForm({ buttonLabel }) {
   } = useForm();
   const addToast = useToast();
 
-  function onSubmit(dataForm) {
+  async function onSubmit(dataForm) {
     try {
-      addToast({ label: 'olokinho meu' });
-      createContact(dataForm);
-    } catch {
-      console.log(dataForm);
+      await createContact(dataForm);
+      addToast({ label: 'Contato criado!' });
+    } catch (error) {
+      addToast({ label: error });
     }
   }
 
