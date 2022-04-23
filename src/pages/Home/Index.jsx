@@ -23,6 +23,7 @@ export function Home() {
       try {
         const fetchedContacts = await getContacts();
         setContacts(fetchedContacts);
+        setIsLoading(false);
       } catch {
         if (isLoading) setIsLoading(false);
       }
@@ -48,7 +49,13 @@ export function Home() {
           </button>
         </header>
         <CardList>
-          {contacts.map((contact) => (
+          { isLoading ? (
+            <>
+              <Card key={Math.random()} className="skeleton" aria-busy="true" />
+              <Card key={Math.random()} className="skeleton" aria-busy="true" />
+              <Card key={Math.random()} className="skeleton" aria-busy="true" />
+            </>
+          ) : contacts.map((contact) => (
             <Card key={contact.id}>
               <div>
                 <div>
@@ -63,7 +70,8 @@ export function Home() {
                 <button type="button"><img src={TrashIcon} alt="Excluir" width={20} height={22} /></button>
               </div>
             </Card>
-          ))}
+          )) }
+          {}
         </CardList>
       </ListContainer>
     </Container>

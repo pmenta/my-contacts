@@ -93,6 +93,10 @@ export const Card = styled.li`
   justify-content: space-between;
   align-items: center;
 
+  &.skeleton {
+    height: 95px;
+  }
+
   & + & { // Todo elemento CARD seguido de outro elemento CARD
     margin-top: 16px;
   }
@@ -144,7 +148,5 @@ export const Card = styled.li`
 
         margin-left: 12px;
       }
-
   }
-
 `;
