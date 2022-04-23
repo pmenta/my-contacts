@@ -6,7 +6,7 @@ import { Overlay, Container } from './styles';
 
 import CheckIcon from '../../assets/images/icons/check.svg';
 
-export function Toast({ label, dismissToast }) {
+export function Toast({ label, danger, dismissToast }) {
   function dismiss() {
     dismissToast();
   }
@@ -22,8 +22,8 @@ export function Toast({ label, dismissToast }) {
 
   return createPortal(
     <Overlay>
-      <Container>
-        <img src={CheckIcon} alt="Ícone de check" width="15px" height="15px" />
+      <Container danger={danger}>
+        {danger ? <span>X</span> : <img src={CheckIcon} alt="Ícone de check" width="15px" height="15px" />}
         <p>{label}</p>
         <button type="button" onClick={dismiss}>x</button>
       </Container>
@@ -34,9 +34,11 @@ export function Toast({ label, dismissToast }) {
 
 Toast.propTypes = {
   label: PropTypes.string.isRequired,
+  danger: PropTypes.bool,
   dismissToast: PropTypes.func,
 };
 
 Toast.DefaultProps = {
   dismissToast: null,
+  danger: false,
 };

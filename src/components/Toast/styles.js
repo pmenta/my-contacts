@@ -26,7 +26,7 @@ export const Container = styled.div`
 
   margin: 0 auto;
 
-  background: #38a169;
+  background: ${({ theme, danger }) => (danger ? theme.colors.danger.main : '#38a169')};
   color: #fefffe;
 
   border-radius: 4px;

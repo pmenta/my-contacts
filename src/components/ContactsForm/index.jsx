@@ -24,7 +24,7 @@ export function ContactForm({ buttonLabel }) {
       await createContact(dataForm);
       addToast({ label: 'Contato criado!' });
     } catch (error) {
-      addToast({ label: error });
+      addToast({ label: error, danger: true });
     }
   }
 
