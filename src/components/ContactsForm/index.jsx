@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { FormGroup } from '../FormGroup';
 import { Input } from '../Input';
@@ -18,11 +19,13 @@ export function ContactForm({ buttonLabel }) {
     register, handleSubmit, formState: { errors }, setValue,
   } = useForm();
   const addToast = useToast();
+  const navigate = useNavigate();
 
   async function onSubmit(dataForm) {
     try {
       await createContact(dataForm);
       addToast({ label: 'Contato criado!' });
+      navigate('/');
     } catch (error) {
       addToast({ label: error, danger: true });
     }

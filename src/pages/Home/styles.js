@@ -30,6 +30,11 @@ export const Header = styled.header`
 
   strong {
     font-size: 24px;
+
+    &.skeleton {
+      width: 150px;
+      height: 50px;
+    }
   }
 
   a {

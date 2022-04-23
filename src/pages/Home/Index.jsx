@@ -23,10 +23,10 @@ export function Home() {
       try {
         const fetchedContacts = await getContacts();
         setContacts(fetchedContacts);
-        setIsLoading(false);
       } catch {
         if (isLoading) setIsLoading(false);
       }
+      setIsLoading(false);
     })();
   }, []);
 
@@ -36,8 +36,8 @@ export function Home() {
         <input type="text" placeholder="Pesquisar contato..." />
       </InputSearchContainer>
       <Header>
-        <strong>
-          3 contatos
+        <strong className={isLoading && 'skeleton'}>
+          {!isLoading && `${contacts.length} contato${contacts.length !== 1 && 's'}`}
         </strong>
         <Link to="/new">Novo contato</Link>
       </Header>
